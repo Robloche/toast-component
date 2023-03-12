@@ -1,4 +1,3 @@
-import React from "react";
 import {
   AlertOctagon,
   AlertTriangle,
@@ -6,9 +5,8 @@ import {
   Info,
   X
 } from "react-feather";
-
+import React from "react";
 import VisuallyHidden from "../VisuallyHidden";
-
 import styles from "./Toast.module.css";
 
 const ICONS_BY_VARIANT = {
