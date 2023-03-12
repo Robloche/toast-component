@@ -18,7 +18,7 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon
 };
 
-function Toast({ handleClose, message, variant }) {
+const Toast = ({ children, handleClose, variant }) => {
   const Icon = React.useMemo(() => {
     return ICONS_BY_VARIANT[variant];
   }, [variant]);
@@ -29,7 +29,7 @@ function Toast({ handleClose, message, variant }) {
         <Icon size={24} />
       </div>
       <p className={styles.content}>
-        {message}
+        {children}
       </p>
       <button className={styles.closeButton} onClick={handleClose}>
         <X size={24} />
@@ -37,6 +37,6 @@ function Toast({ handleClose, message, variant }) {
       </button>
     </div>
   );
-}
+};
 
 export default Toast;
