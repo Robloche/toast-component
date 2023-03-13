@@ -1,5 +1,5 @@
 import React from "react";
-import useEscapeKey from "../../hooks/useEscapeKey";
+import useKeyUp from "../../hooks/use-key-up";
 
 export const ToastContext = React.createContext();
 
@@ -8,7 +8,7 @@ const ToastProvider = ({ children }) => {
 
   const clearToasts = React.useCallback(() => setToasts([]), []);
 
-  useEscapeKey(clearToasts);
+  useKeyUp("Escape", clearToasts);
 
   const pushToast = React.useCallback((message, variant) => {
     if (message !== "") {
