@@ -7,7 +7,10 @@ const ToastShelf = () => {
   const { closeToast, toasts } = React.useContext(ToastContext);
 
   return (
-    <ol className={styles.wrapper}>
+    <ol className={styles.wrapper}
+        role="region"
+        aria-live="polite"
+        aria-label="Notification">
       {toasts.map(({ id, message, variant }) => (
         <li key={id} className={styles.toastWrapper}>
           <Toast handleClose={() => closeToast(id)} variant={variant}>{message}</Toast>

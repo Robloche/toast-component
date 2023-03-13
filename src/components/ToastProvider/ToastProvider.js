@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export const ToastContext = React.createContext();
 
 const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = React.useState([]);
+
+  useEffect(() => {
+    const handleKeyUp = (event) => {
+      const { key } = event;
+
+      if (key === "Escape") {
+        event.preventDefault();
+        setToasts([]);
+      }
+    };
+
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, []);
 
   const pushToast = React.useCallback((message, variant) => {
     if (message !== "") {
